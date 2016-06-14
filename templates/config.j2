@@ -1,0 +1,10 @@
+[default]
+{% if awscli_access_key != '' %}
+aws_access_key_id = {{ awscli_access_key }}
+{% endif %}
+{% if awscli_secret_key != '' %}
+aws_secret_access_key = {{ awscli_secret_key }}
+{% endif %}
+{% if awscli_region != '' %}
+region = {{ awscli_region }}
+{% endif %}

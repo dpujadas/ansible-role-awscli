@@ -1,0 +1,40 @@
+---
+# tasks file for awscli
+
+- name: Install required packages
+  apt:
+    name: 'python-pip'
+    state: 'installed'
+  tags:
+    - awscli
+
+- name: Install pip awscli package
+  pip:
+    name: 'awscli'
+    state: 'latest'
+  when: awscli_version == 'latest'
+  tags:
+    - awscli
+
+- name: Install pip awscli package
+  pip:
+    name: 'awscli'
+    state: 'present'
+    version: '{{ awscli_version }}'
+  when: awscli_version != 'latest'
+  tags:
+    - awscli
+
+- name: Enable tab completion for awscli
+  copy:
+    src: 'aws-cli.sh'
+    dest: '/etc/profile.d/aws-cli.sh'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  when: awscli_enable_tab_completion
+  tags:
+    - awscli
+
+- include: 'config.yml'
+  when: awscli_user is defined

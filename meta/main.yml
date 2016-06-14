@@ -1,0 +1,18 @@
+galaxy_info:
+  author: David Pujadas
+  description: Ansible role to install awscli on Ubuntu server
+
+  license: MIT
+
+  min_ansible_version: 1.9
+
+  platforms:
+  - name: Ubuntu
+    versions:
+      - all
+
+  galaxy_tags:
+    - ubuntu
+    - awscli
+
+dependencies: []

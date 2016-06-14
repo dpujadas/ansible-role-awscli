@@ -1,0 +1,8 @@
+---
+# defaults file for awscli
+
+awscli_version: 'latest'
+awscli_enable_tab_completion: True
+awscli_access_key: ''
+awscli_secret_key: ''
+awscli_region: ''

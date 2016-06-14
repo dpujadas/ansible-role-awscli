@@ -1,0 +1,10 @@
+---
+- hosts: travis
+  connection: docker
+  remote_user: root
+  roles:
+    - {
+      role: ansible-role-awscli,
+      awscli_user: 'root',
+      awscli_region: 'eu-west-1'
+    }
