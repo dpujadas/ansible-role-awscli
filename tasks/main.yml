@@ -36,5 +36,22 @@
   tags:
     - awscli
 
-- include: 'config.yml'
+- block:
+    - name: Ensure .aws dir exists and belongs to {{ awscli_user }}
+      file:
+        path: '~{{ awscli_user }}/.aws'
+        state: 'directory'
+        owner: '{{ awscli_user }}'
+        group: '{{ awscli_group|default(awscli_user) }}'
+        mode: '0755'
+
+    - name: Create awscli config file
+      template:
+        src: 'config.j2'
+        dest: '~{{ awscli_user }}/.aws/config'
+        owner: '{{ awscli_user }}'
+        group: '{{ awscli_group|default(awscli_user) }}'
+        mode: '0644'
   when: awscli_user is defined
+  tags:
+    - awscli
