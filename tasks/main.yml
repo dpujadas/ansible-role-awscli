@@ -1,13 +1,6 @@
 ---
 # tasks file for awscli
 
-- name: Install required packages
-  apt:
-    name: 'python-pip'
-    state: 'installed'
-  tags:
-    - awscli
-
 - name: Install pip awscli package
   pip:
     name: 'awscli'

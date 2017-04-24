@@ -15,4 +15,7 @@ galaxy_info:
     - ubuntu
     - awscli
 
-dependencies: []
+- name: python-pip
+  src: 'https://github.com/dpujadas/ansible-role-python-pip.git'
+  scm: git
+  version: master
