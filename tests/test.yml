@@ -1,5 +1,5 @@
 ---
-- hosts: travis
+- hosts: all
   connection: docker
   remote_user: root
   roles:
