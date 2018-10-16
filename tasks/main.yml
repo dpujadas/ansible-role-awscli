@@ -48,3 +48,15 @@
   when: awscli_user is defined
   tags:
     - awscli
+
+- name: Check if Session Manager Plugin package is installed
+  shell: >
+    dpkg-query -W session-manager-plugin
+  register: awscli_sessionmanagerplugin_check_deb
+  failed_when: awscli_sessionmanagerplugin_check_deb.rc > 1
+  changed_when: awscli_sessionmanagerplugin_check_deb.rc == 1
+
+- name: Install Session Manager Plugin package
+  apt:
+    deb: 'https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb'
+  when: awscli_sessionmanagerplugin_check_deb.rc == 1
